@@ -4,7 +4,7 @@ import Hero from './Components/NavBar/Hero/Hero'
 import Programs from './Components/NavBar/Programs/Programs'
 import Title from './Components/Title/Title'
 import Services from './Components/Services/Services'
-import hospitalLogo from "../public/logo.png";
+import hospitalLogo from "../src/assets/Logo.png";
 import Footer from './Components/Footer/Footer'
 import ChatBot from './Components/ChatBot/ChatBot'
 
