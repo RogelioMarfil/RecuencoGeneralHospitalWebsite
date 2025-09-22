@@ -1,0 +1,18 @@
+html, body, #root {
+  height: 100%;         
+  margin: 0;            
+  display: flex;
+  flex-direction: column;
+}
+
+#root > div {
+  flex: 1;
+}
+
+.footer {
+  background-color: #2d307e;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+}
