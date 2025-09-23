@@ -3,25 +3,24 @@ import './NavBar.css'
 import logo from '../../assets/Logo.png'
 
 const NavBar = () => {
-  const [scrollDirection, setScrollDirection] = useState("down");
-  const [lastScrollY, setLastScrollY] = useState(0);
+const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setScrollDirection("down");   
+      if (window.scrollY > 50) {
+        setScrolled(true);  
       } else {
-        setScrollDirection("up");    
+        setScrolled(false);
       }
-      setLastScrollY(window.scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
 
   return (
-    <nav className={`navbar ${scrollDirection === "down" ? "dark-nav" : "transparent"}`}>
+     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <img src={logo} alt="Logo" className="logo" />
       <ul>
         <li>Home</li>

@@ -1,19 +1,53 @@
 .navbar {
   width: 100%;
-  padding: 10px 30px;       
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 10;
-  transition: background-color 0.5s ease, padding 0.5s ease, transform 0.5s ease;
+  padding: 18px 40px;
+  transition: all 0.4s ease;
+  z-index: 1000;
+  background: transparent;
+  color: #fff;
+}
+.navbar.scrolled {
+  background: #2d307e; 
+  padding: 12px 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .logo {
-  width: 80px;
+  width: 85px;
   transition: width 0.5s ease;
+  
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-links li {
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navbar:not(.scrolled) .nav-links li {
+  color: #2d307e;
+}
+
+.navbar.scrolled .nav-links li {
+  color: white;
+}
+
+.nav-links li:hover {
+  color: #ffdd00;
 }
 
 nav ul li {
