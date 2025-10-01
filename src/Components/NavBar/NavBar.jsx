@@ -26,7 +26,7 @@ const [scrolled, setScrolled] = useState(false);
         <li>Home</li>
         <li>HMO</li>
         <li>Doctors</li>
-        <li>Services</li>
+        <li>Careers</li>
         <li>About Us</li>
         <li><button className="Btn">Contact Us</button></li>
       </ul>

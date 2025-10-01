@@ -7,6 +7,7 @@ import Services from './Components/Services/Services'
 import hospitalLogo from "../src/assets/Logo.png";
 import Footer from './Components/Footer/Footer'
 import ChatBot from './Components/ChatBot/ChatBot'
+import Complaints from './Components/Complains/Complain'
 
 function App () {
   useEffect(() => {
@@ -29,6 +30,7 @@ function App () {
         <Programs/>
         <Services/>
         <ChatBot/>
+         <Complaints/>
         <Footer/>
     </div>
   )

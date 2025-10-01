@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ChatBot.css";
 
 const ChatBot = () => {
@@ -8,69 +8,135 @@ const ChatBot = () => {
   const [typing, setTyping] = useState(false);
   const [language, setLanguage] = useState(null);
 
-  // Toggle chat window
+  const chatEndRef = useRef(null);
+
+  // Auto-scroll
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, typing]);
+
+  // Load saved language
+  useEffect(() => {
+    const savedLang = localStorage.getItem("chatbotLanguage");
+    if (savedLang) {
+      setLanguage(savedLang);
+    }
+  }, []);
+
   const toggleChat = () => {
     setIsOpen(!isOpen);
+
     if (!isOpen) {
-      setLanguage(null);
-      setMessages([{ sender: "bot", text: "Please choose your language / Pumili ng wika:" }]);
+      if (!language) {
+        setMessages([{ sender: "bot", text: "Please choose your language / Pumili ng wika:" }]);
+      } else {
+        setMessages([
+          {
+            sender: "bot",
+            text: language === "en" ? "Welcome back! How can I help you today?" : "Muli, kamusta! Paano kita matutulungan?",
+          },
+          {
+            sender: "bot",
+            text:
+              language === "en"
+                ? "You can ask me about services, visiting hours, location, or contact."
+                : "Maaari mong itanong ang tungkol sa serbisyo, oras ng pagbisita, lokasyon, o kontak.",
+          },
+        ]);
+      }
     }
   };
 
-  // Handle language selection
+  // Set language + greeting
   const handleLanguageSelect = (lang) => {
     setLanguage(lang);
+    localStorage.setItem("chatbotLanguage", lang);
+
     if (lang === "en") {
-      addBotMessage("Hi! How can I help you today?");
+      addBotMessage("Language set to English. Hi! How can I help you today?");
+      addBotMessage("You can ask me about services, visiting hours, location, or contact.");
     } else {
-      addBotMessage("Kamusta! Paano kita matutulungan ngayon?");
+      addBotMessage("Naka-set na sa Tagalog. Kamusta! Paano kita matutulungan?");
+      addBotMessage("Maaari mong itanong ang tungkol sa serbisyo, oras ng pagbisita, lokasyon, o kontak.");
     }
   };
 
-  // Add bot message with typing effect
   const addBotMessage = (text) => {
     setTyping(true);
     setTimeout(() => {
       setMessages((prev) => [...prev, { sender: "bot", text }]);
       setTyping(false);
-    }, 1000);
+    }, 800);
   };
 
-  // Handle sending user input
-  const handleSend = () => {
-    if (!input.trim()) return;
-    setMessages((prev) => [...prev, { sender: "user", text: input }]);
+  const handleSend = (userText) => {
+    const message = userText || input;
+    if (!message.trim()) return;
+
+    setMessages((prev) => [...prev, { sender: "user", text: message }]);
+    const lowerMsg = message.toLowerCase();
     setInput("");
 
-    if (language === "en") {
-      if (input.toLowerCase().includes("services")) {
-        addBotMessage("We offer General Consultation, Emergency Care, and Laboratory services.");
-      } else if (input.toLowerCase().includes("hours")) {
-        addBotMessage("Our visiting hours are 8:00 AM – 8:00 PM daily.");
-      } else if (input.toLowerCase().includes("location")) {
-        addBotMessage("We are located at [Your Hospital Address].");
+
+    const greetings = ["hi", "hello", "good morning", "good afternoon", "good evening"];
+    if (greetings.some((greet) => lowerMsg.includes(greet))) {
+      if (language === "en") {
+        addBotMessage("Hello! How can I assist you today?");
+        addBotMessage("You can ask me about services, visiting hours, location, or contact.");
       } else {
-        addBotMessage("For more info, please contact us directly at (xxx) xxx-xxxx.");
+        addBotMessage("Kamusta! Paano kita matutulungan?");
+        addBotMessage("Maaari mong itanong ang tungkol sa serbisyo, oras ng pagbisita, lokasyon, o kontak.");
       }
-    } else {
-      if (input.toLowerCase().includes("serbisyo") || input.toLowerCase().includes("services")) {
-        addBotMessage("Nag-aalok kami ng General Consultation, Emergency Care, at Laboratory.");
-      } else if (input.toLowerCase().includes("oras") || input.toLowerCase().includes("hours")) {
-        addBotMessage("Ang oras ng pagbisita ay 8:00 AM – 8:00 PM araw-araw.");
-      } else if (input.toLowerCase().includes("lokasyon") || input.toLowerCase().includes("location")) {
-        addBotMessage("Matatagpuan kami sa [Iyong Address Dito].");
+      return;
+    }
+
+  
+    if (language === "en") {
+      if (lowerMsg.includes("services")) {
+        addBotMessage("We offer General Consultation, Emergency Care, and Laboratory services.");
+      } else if (lowerMsg.includes("hours") || lowerMsg.includes("visiting")) {
+        addBotMessage("Our visiting hours are 8:00 AM – 8:00 PM daily.");
+      } else if (lowerMsg.includes("location") || lowerMsg.includes("address")) {
+        addBotMessage("We are located at [Your Hospital Address].");
+      } else if (lowerMsg.includes("contact")) {
+        addBotMessage("You can contact us directly at (xxx) xxx-xxxx.");
+      } else if (lowerMsg.includes("language")) {
+        // Reset to language choice
+        setLanguage(null);
+        localStorage.removeItem("chatbotLanguage");
+        addBotMessage("Please choose your language / Pumili ng wika:");
       } else {
-        addBotMessage("Para sa karagdagang impormasyon, mangyaring kontakin kami sa (xxx) xxx-xxxx.");
+        addBotMessage("Sorry, I can't understand. Please try asking about services, hours, location, or contact.");
+      }
+    } else if (language === "tl") {
+      // Tagalog responses
+      if (lowerMsg.includes("serbisyo") || lowerMsg.includes("services")) {
+        addBotMessage("Nag-aalok kami ng General Consultation, Emergency Care, at Laboratory.");
+      } else if (lowerMsg.includes("oras") || lowerMsg.includes("hours")) {
+        addBotMessage("Ang oras ng pagbisita ay 8:00 AM – 8:00 PM araw-araw.");
+      } else if (lowerMsg.includes("lokasyon") || lowerMsg.includes("address") || lowerMsg.includes("location")) {
+        addBotMessage("Matatagpuan kami sa [Iyong Address Dito].");
+      } else if (lowerMsg.includes("kontak") || lowerMsg.includes("contact")) {
+        addBotMessage("Maaari mo kaming tawagan sa (xxx) xxx-xxxx.");
+      } else if (lowerMsg.includes("wika") || lowerMsg.includes("language")) {
+        // Reset to language choice
+        setLanguage(null);
+        localStorage.removeItem("chatbotLanguage");
+        addBotMessage("Pumili ng wika / Please choose your language:");
+      } else {
+        addBotMessage("Pasensya, hindi ko maintindihan. Subukan mong itanong tungkol sa serbisyo, oras, lokasyon, o kontak.");
       }
     }
   };
 
   return (
     <div>
-      {/* Chat Toggle Button */}
-      <button className="chat-toggle" onClick={toggleChat}>
-        💬
-      </button>
+     {/* Chat Toggle Button */}
+        {!isOpen && (
+        <button className={`chat-toggle ${isOpen ? "hide" : ""}`} onClick={toggleChat}>
+    💬
+  </button>
+      )}
 
       {/* Chat Window */}
       <div className={`chat-window ${isOpen ? "open" : ""}`}>
@@ -88,16 +154,38 @@ const ChatBot = () => {
 
           {typing && <div className="chat-message bot typing">Typing...</div>}
 
-          {/* Show language buttons only if no language selected */}
+          {/* Language selection */}
           {!language && (
             <div className="language-options">
               <button onClick={() => handleLanguageSelect("en")}>English</button>
               <button onClick={() => handleLanguageSelect("tl")}>Tagalog</button>
             </div>
           )}
+
+          {/* Quick Replies */}
+          {language && (
+            <div className="quick-replies">
+              <button onClick={() => handleSend(language === "en" ? "services" : "serbisyo")}>
+                {language === "en" ? "Services" : "Serbisyo"}
+              </button>
+              <button onClick={() => handleSend(language === "en" ? "hours" : "oras")}>
+                {language === "en" ? "Visiting Hours" : "Oras ng Pagbisita"}
+              </button>
+              <button onClick={() => handleSend(language === "en" ? "location" : "lokasyon")}>
+                {language === "en" ? "Location" : "Lokasyon"}
+              </button>
+              <button onClick={() => handleSend(language === "en" ? "contact" : "kontak")}>
+                {language === "en" ? "Contact" : "Kontak"}
+              </button>
+              <button onClick={() => handleSend("language")}>
+                {language === "en" ? "Change Language" : "Baguhin ang Wika"}
+              </button>
+            </div>
+          )}
+
+          <div ref={chatEndRef} />
         </div>
 
-        {/* Input only appears if language is selected */}
         {language && (
           <div className="chat-input">
             <input
@@ -107,7 +195,7 @@ const ChatBot = () => {
               placeholder={language === "en" ? "Type your message..." : "I-type ang iyong mensahe..."}
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
             />
-            <button onClick={handleSend}>➤</button>
+            <button onClick={() => handleSend()}>➤</button>
           </div>
         )}
       </div>

@@ -1,0 +1,135 @@
+/* Wrapper for 2 columns */
+.complaints-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 25px;
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  font-family: Arial, sans-serif;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Left side form */
+.complaints-container {
+  flex: 2;
+}
+
+/* Right side info */
+.contact-info {
+  flex: 1;
+  background: #f8f9ff;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info h3 {
+  margin: 15px 0 8px;
+  color: #2d307e;
+  font-size: 18px;
+}
+
+.contact-info strong {
+  color: #1e235a;
+}
+
+/* Popup animations */
+.popup {
+  animation: popupScale 0.5s ease forwards;
+}
+
+@keyframes popupScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.complaints-form label {
+  display: block;
+  margin-bottom: 18px;
+  font-weight: bold;
+}
+
+.complaints-form input,
+.complaints-form select,
+.complaints-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.complaints-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.complaints-form button {
+  width: 100%;
+  padding: 14px;
+  background: #2d307e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.complaints-form button:hover {
+  background: #1e235a;
+}
+
+.thank-you {
+  text-align: center;
+  font-size: 18px;
+  background: #f0f7ff;
+  border: 1px solid #cce0ff;
+  border-radius: 12px;
+  padding: 30px;
+  line-height: 1.5;
+}
+
+.error {
+  color: red;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.address-link {
+  color: #2d307e;
+  text-decoration: underline;
+  font-weight: normal;
+}
+
+.address-link:hover {
+  color: #1a1f5c;
+}
