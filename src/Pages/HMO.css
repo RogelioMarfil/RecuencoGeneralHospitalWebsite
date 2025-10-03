@@ -1,0 +1,36 @@
+.hmo-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+.hmo-banner {
+  width: 100%;
+  height: 4in;
+  background: linear-gradient(rgba(8, 0, 58, 0.7), rgba(8, 0, 58, 0.7)), url(../assets/HMOLogo.png);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hmo-banner-text h1 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.hmo-banner-text p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+.hmo-content {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}

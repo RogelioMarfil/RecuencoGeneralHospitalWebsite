@@ -24,14 +24,15 @@ function App () {
   return (
     <div>
       <NavBar/>
-      <Hero onScroll={scrollToAbout}/>
-      <div className="container"></div>
+       <Hero onScroll={scrollToAbout}/>
+      <div className="container">
         <Title title='OUR SERVICES'/>
         <Programs/>
         <Services/>
         <ChatBot/>
          <Complaints/>
         <Footer/>
+        </div>
     </div>
   )
 }
