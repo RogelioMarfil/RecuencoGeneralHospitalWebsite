@@ -6,7 +6,11 @@
 .contact-banner {
   width: 100%;
   height: 4in;
+<<<<<<< HEAD
   background: linear-gradient(rgba(8, 0, 58, 0.7), rgba(8, 0, 58, 0.7)), url(../assets/ContactUsLogo.png);
+=======
+  background: linear-gradient(rgba(8, 0, 58, 0.7), rgba(8, 0, 58, 0.7)), url(../assets/HMOLogo.png);
+>>>>>>> 7d14e1cfb3f95782b4b1e6dcfe9c52c448964623
   background-size: cover;
   background-position: center;
   color: #fff;

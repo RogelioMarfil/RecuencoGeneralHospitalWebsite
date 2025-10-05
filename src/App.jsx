@@ -22,6 +22,10 @@ function App () {
   };
   return (
     <div>
+<<<<<<< HEAD
+=======
+      <NavBar/>
+>>>>>>> 7d14e1cfb3f95782b4b1e6dcfe9c52c448964623
        <Hero onScroll={scrollToAbout}/>
       <div className="container">
         <Title title='OUR SERVICES'/>
