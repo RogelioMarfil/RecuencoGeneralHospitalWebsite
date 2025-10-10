@@ -47,7 +47,7 @@ const ChatBot = () => {
     }
   };
 
-  // Set language + greeting
+  // Set language and greeting
   const handleLanguageSelect = (lang) => {
     setLanguage(lang);
     localStorage.setItem("chatbotLanguage", lang);
