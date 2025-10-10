@@ -3,6 +3,9 @@ import Footer from "../Components/Footer/Footer";
 import ChatBot from '../Components/ChatBot/ChatBot';
 import Complaints from '../Components/Complains/Complain';
 import './Contact.css';
+import ChatBot from '../Components/ChatBot/ChatBot'
+import Complaints from '../Components/Complains/Complain'
+import './Contact.css'
 
 const Contact = () => {
   return (
@@ -25,5 +28,4 @@ const Contact = () => {
     </>
   )
 }
-
 export default Contact;
