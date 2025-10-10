@@ -14,6 +14,7 @@ const NavBar = () => {
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+
       <Link to="/">
       <img src={logo} alt="Logo" className="logo" />
       </Link>

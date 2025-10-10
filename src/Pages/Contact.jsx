@@ -21,7 +21,6 @@ const Contact = () => {
       <ChatBot/>
     <Footer />
     </div>
-    
     </>
   );
 };
