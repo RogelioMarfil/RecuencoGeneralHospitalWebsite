@@ -8,6 +8,16 @@ import Careers from "../Pages/Careers"
 import About from "../Pages/About"
 import Contact from "../Pages/Contact"
 import NewsUpdate from "../Pages/NewsUpdate"
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./NavBar/NavBar";
+import App from "../App";
+import HMO from "../Pages/HMO";
+import Doctors from "../Pages/Doctors";
+import Careers from "../Pages/Careers";
+import About from "../Pages/About";
+import Contact from "../Pages/Contact";
+
 
 function MainApp() {
   return (

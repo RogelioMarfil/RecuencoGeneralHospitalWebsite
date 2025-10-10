@@ -21,9 +21,7 @@ const Contact = () => {
       <ChatBot/>
     <Footer />
     </div>
-    
     </>
   )
 }
-
 export default Contact;
