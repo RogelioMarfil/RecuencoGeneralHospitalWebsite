@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import NavBar from './Components/NavBar/NavBar'
 import Hero from './Components/NavBar/Hero/Hero'
 import Programs from './Components/NavBar/Programs/Programs'
 import Title from './Components/Title/Title'
@@ -7,7 +6,7 @@ import Services from './Components/Services/Services'
 import hospitalLogo from "../src/assets/Logo.png";
 import Footer from './Components/Footer/Footer'
 import ChatBot from './Components/ChatBot/ChatBot'
-import Complaints from './Components/Complains/Complain'
+
 
 function App () {
   useEffect(() => {
@@ -23,15 +22,14 @@ function App () {
   };
   return (
     <div>
-      <NavBar/>
-      <Hero onScroll={scrollToAbout}/>
-      <div className="container"></div>
+       <Hero onScroll={scrollToAbout}/>
+      <div className="container">
         <Title title='OUR SERVICES'/>
         <Programs/>
         <Services/>
         <ChatBot/>
-         <Complaints/>
         <Footer/>
+        </div>
     </div>
   )
 }
