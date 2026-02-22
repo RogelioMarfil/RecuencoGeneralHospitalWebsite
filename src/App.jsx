@@ -7,13 +7,6 @@ import hospitalLogo from "../src/assets/Logo.png";
 import Footer from './Components/Footer/Footer';
 import ChatBot from './Components/ChatBot/ChatBot';
 import Events from './Components/Events/Events';
-import React, { useEffect } from 'react';
-import Hero from './Components/NavBar/Hero/Hero';
-import Programs from './Components/NavBar/Programs/Programs';
-import Title from './Components/Title/Title';
-import Services from './Components/Services/Services';
-import hospitalLogo from "../src/assets/Logo.png";
-import Footer from './Components/Footer/Footer';
 
 
 function App () {
