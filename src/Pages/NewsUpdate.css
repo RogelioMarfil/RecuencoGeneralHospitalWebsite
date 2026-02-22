@@ -1,0 +1,121 @@
+.newsupdate-page {
+  width: 100%;
+  min-height: 100vh auto;
+  background: #fff;
+  font-family: 'Arial', sans-serif;
+}
+.newsupdate-banner {
+  width: 100%;
+  height: 4in;
+  background: url(../assets/NewsUpdate.gif);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.newsupdate-content {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+.newsupdate-content video {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.swiper {
+  width: 100%;
+}
+.swiper-slide img {
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+.swiper-slide img:hover {
+  transform: scale(1.05);
+}
+.news-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+.news-card .news-date {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+.news-card .news-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+.news-card .news-content {
+  font-size: 16px;
+  color: #4b5563;
+}
+@media (max-width: 768px) {
+  .newsupdate-banner {
+    height: 3in;
+  }
+  .news-card .news-title {
+    font-size: 18px;
+  }
+
+  .news-card .news-content {
+    font-size: 14px;
+  }
+}
+.video-container {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+.news-video {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.carousel-image-wrapper {
+  width: 100%;
+  height: 260px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #f9fafb;
+  transition: transform 0.3s ease;
+}
+.carousel-image-wrapper:hover .carousel-image {
+  transform: scale(1.05);
+}
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+.image-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 12px;
+}

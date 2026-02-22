@@ -1,0 +1,273 @@
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.doctor-page {
+  flex: 1;
+  width: 100%;
+  background: #fff;
+  overflow: visible;
+}
+.doctor-banner {
+  width: 100%;
+  height: 4in;
+  background: url(../assets/DoctorsLogo.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.doctor-content {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.doctor-content h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.doctor-content p {
+  font-size: 18px;
+  color: #555;
+}
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+.doctor-card {
+  background: #f0f4ff;
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.view-text {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #081a4b;
+}
+
+.modal-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  z-index: 999999;
+  font-size: 23px;
+  position: fixed;
+  animation: overlayFadeIn 0.4s ease forwards;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+.modal-overlay p{
+font-size: 22px;
+}
+.modal {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: modalOpen 0.4s ease forwards;
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal.schedule-modal {
+  width: 90%;
+  max-width: 1000px;
+}
+.schedule-table {
+  word-wrap: break-word;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.schedule-table th,
+.schedule-table td {
+  border: 1px solid #ddd;
+  padding: 14px;
+  font-size: 15px;
+}
+
+.schedule-table th {
+  background: #081a4b;
+  color: #fff;
+}
+
+.close-btn {
+  padding: 10px 25px;
+  font-size: 20px;
+  background: #081a4b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #0a2a6e;
+}
+.daily-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  animation: fadeIn 0.3s ease;
+}
+
+.daily-popup {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  width: 95%;
+  max-width: 800px;
+  text-align: center;
+  animation: slideDown 0.3s ease;
+}
+
+
+.view-schedule-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #081a4b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.view-schedule-btn:hover {
+  background: #0a2a6e;
+}
+
+.modal-overlay.closing {
+  animation: overlayFadeOut 0.4s ease forwards;
+}
+
+.modal.closing {
+  animation: modalClose 0.4s ease forwards;
+}
+.doctor-content,
+.doctor-card {
+  opacity: 0;
+  transform: scale(0.97);
+  animation: appear 0.4s ease forwards;
+}
+
+.doctor-banner {
+  animation-delay: 0.1s;
+}
+
+.doctor-content {
+  animation-delay: 0.2s;
+}
+
+.doctor-card:nth-child(1) { animation-delay: 0.3s; }
+.doctor-card:nth-child(2) { animation-delay: 0.35s; }
+.doctor-card:nth-child(3) { animation-delay: 0.4s; }
+.doctor-card:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes appear {
+  0% { opacity: 0; transform: scale(0.97); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes overlayFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+
+@keyframes modalOpen {
+  0% { opacity: 0; transform: scale(0.95); }
+  60% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes modalClose {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideUp {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-30px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1000px) {
+  .doctor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .doctor-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .modal {
+    min-width: unset;
+    width: 95%;
+    padding: 20px;
+  }
+}
