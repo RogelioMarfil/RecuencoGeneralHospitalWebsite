@@ -119,7 +119,7 @@ const Complaints = () => {
      <p>
     <strong>Address:</strong>{" "}
     <a 
-      href="https://www.google.com/maps?q=68+Sampaloc+Extension,+North+Signal+Village,+Taguig+City,+1630" 
+      href="https://www.google.com/maps/place/Recuenco+General+Hospital/@14.5133578,121.0570999,17z/data=!3m1!4b1!4m6!3m5!1s0x3397cf4bac11dc89:0x59adfff4d973db7b!8m2!3d14.5133526!4d121.0596748!16s%2Fg%2F1hc3sg7v1?entry=ttu&g_ep=EgoyMDI1MTAyOS4yIKXMDSoASAFQAw%3D%3D" 
       target="_blank" 
       rel="noopener noreferrer"
       className="address-link"

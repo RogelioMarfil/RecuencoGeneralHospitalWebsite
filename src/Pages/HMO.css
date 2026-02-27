@@ -1,0 +1,363 @@
+.hmo-page {
+  background: #fff;
+  flex: 1;
+}
+.banner {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: auto;          /* Let it adjust height automatically */
+  max-height: 300px;     /* Optional: limits height on desktop */
+  object-fit: cover;     /* Makes images scale nicely */
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hmo-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 per row on desktop */
+  gap: 15px;
+  margin-top: 20px; /* ensures banner stays above */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+/* Banner */
+
+.hmo-banner {
+  width: 100%;
+  height: 350px;
+  background: url(../assets/HMOLogo.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  
+}
+
+/* Content */
+
+.hmo-content {
+  flex: 1;
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.hmo-content h1 {
+  margin-bottom: 10px;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+}
+
+.doctor-hmo-list {
+  text-align: left;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.doctor-hmo-list li {
+  margin-bottom: 5px;
+}
+
+/* Search */
+
+.search-container {
+  position: relative;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-input-wrapper {
+  position: relative;
+}
+
+.search-container input {
+  width: 320px;
+  max-width: 90vw;
+  padding: 10px 15px;
+  border-radius: 25px 25px 0 0;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #24297b;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-container button:hover {
+  background: #302f68;
+}
+
+/* Suggestions */
+
+.suggestions-dropdown {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  max-height: 230px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 12px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.suggestion-item:hover {
+  background: #f0f4ff;
+}
+
+.suggestion-type {
+  font-size: 11px;
+  background: #24297b;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+/* HMO Grid */
+
+.hmo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* force 4 per row on desktop */
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Cards */
+
+.hmo-card {
+  background: #f0f4ff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  padding: 15px;
+}
+
+.hmo-card:hover {
+  background: #dde6ff;
+  transform: scale(1.05);
+}
+
+.hmo-logo {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+/* Modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;       /* smaller padding */
+  border-radius: 12px;
+  max-width: 400px;    /* smaller max width */
+  width: 90%;          /* keep it responsive */
+  text-align: center;
+  position: relative;
+  z-index: 2001; 
+}
+
+.modal-logo {
+  width: 60%;          /* smaller logo */
+  max-width: 150px;    /* smaller max width */
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 10px; /* less spacing */
+}
+
+.modal ul {
+  text-align: left; /* left-align names */
+  margin-top: 15px;
+  padding-left: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.modal li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  text-align: left; /* ensure text is left-aligned */
+}
+
+.close-btn {
+  margin-top: 15px;    /* less margin */
+  padding: 8px 20px;   /* smaller button */
+  font-size: 13px;
+  min-width: 70px;
+}
+
+.close-btn:hover {
+  background: #0a2a6e;
+}
+
+/* Footer */
+
+footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .hmo-banner {
+    height: 180px;
+  }
+
+  .hmo-card {
+    height: 120px;
+  }
+
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-container input {
+    width: 90%;
+  }
+
+  .search-container button {
+    width: 150px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .hmo-banner {
+    height: 140px;
+  }
+
+.hmo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 per row on desktop */
+  gap: 20px;
+  margin-top: 30px;
+}
+
+  .hmo-card {
+    height: 100px;
+  }
+
+}
+@media (max-width: 480px) {
+  .modal {
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .modal-logo {
+    width: 50%;
+    max-width: 120px;
+    margin-bottom: 8px;
+  }
+
+  .modal ul {
+    max-height: 120px;
+  }
+
+  .modal li {
+    font-size: 13px;
+  }
+
+  .close-btn {
+    padding: 6px 18px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  .hmo-grid {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .hmo-grid {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 480px) {
+  .hmo-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .hmo-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+  }
+}
+@media (max-width: 1024px) {
+  .hmo-banner {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hmo-banner {
+    height: 180px;
+    background-size: contain; 
+    background-position: center;
+    background-color: #ffffff;
+  }
+}
