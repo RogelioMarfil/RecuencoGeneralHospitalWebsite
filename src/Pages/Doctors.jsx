@@ -139,7 +139,6 @@ import "./Doctors.css";
 
  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-
 const Doctors = () => {
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [dailyScheduleVisible, setDailyScheduleVisible] = useState(false);

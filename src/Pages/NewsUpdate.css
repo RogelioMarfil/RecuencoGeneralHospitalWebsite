@@ -33,7 +33,6 @@
   max-width: 900px;
   margin: auto;
 }
-
 .news-video {
   width: 100%;
   border-radius: 12px;
@@ -140,7 +139,6 @@
   z-index: 9999;
   cursor: pointer;
 }
-
 .image-modal img {
   max-width: 90%;
   max-height: 90%;

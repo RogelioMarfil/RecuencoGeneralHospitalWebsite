@@ -11,9 +11,11 @@ html, body, #root {
 
 .footer {
   background-color: #2d307e;
+  z-index: 0;
   color: white;
   text-align: center;
   padding: 15px 0;
+  position: relative;
   font-size: 14px;
   position: relative; /* keep it normal */
   width: 100%;
