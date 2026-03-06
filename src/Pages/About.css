@@ -1,0 +1,120 @@
+.about-page {
+  width: 100%;
+  min-height: 100vh auto;
+  background: #fff;
+  flex: 1;
+}
+.about-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-banner {
+  width: 100%;
+  height: 4in;
+  background:url(../assets/AboutUsLogo.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-content {
+  max-width: 1600px;
+  text-align: center;
+  margin: auto;
+  padding: 40px 20px;
+}
+.about-content h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+.about-sections {
+  display: grid;
+  grid-template-columns: repeat(4, 350px); /* fixed card columns */
+  gap: 20px;
+  justify-content: center; /* ✅ centers the GROUP */
+}
+.about-card {
+  width: 350px;
+  background: #f0f4ff;
+  padding: 30px;
+  border-radius: 14px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+.about-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #081a4b;
+}
+.about-card p {
+  font-size: 16px;
+  color: #555;
+}
+@media screen and (max-width: 1200px) {
+  .about-sections {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-sections {
+    grid-template-columns: 1fr;
+  }
+}
+.about-organization {
+  grid-column: 1 / -1;
+  margin-top: 30px;
+  text-align: center;
+}
+.about-organization h3 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+.organization-container {
+  background: #f5f7ff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.organization-image {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 12px;
+}
+.departments-container {
+  display: grid;
+  grid-template-columns: repeat(4, 3in);
+  gap: 0.4in;
+  justify-content: center;
+  margin-top: 30px;
+}
+.department-card {
+  width: 3in;
+  height: 3in;
+  background: #ffffff;
+  border-radius: 0.25in;
+  padding: 0.2in;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+.department-card img {
+  width: 100%;
+  height: 2.1in;
+  object-fit: cover;
+  border-radius: 0.15in;
+}
+.department-card span {
+  display: block;
+  margin-top: 0.15in;
+  font-size: 0.28in;
+  font-weight: 600;
+}
