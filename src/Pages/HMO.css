@@ -139,12 +139,16 @@ body {
   margin-left: auto;
 }
 
+/* HMO Grid */
+
 .hmo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(4, 1fr); /* force 4 per row on desktop */
   gap: 20px;
   margin-top: 30px;
 }
+
+/* Cards */
 
 .hmo-card {
   background: #f0f4ff;
@@ -170,6 +174,9 @@ body {
   max-height: 100%;
 }
 
+
+/* Modal */
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -185,25 +192,25 @@ body {
 
 .modal {
   background: #fff;
-  padding: 20px;       
+  padding: 20px;       /* smaller padding */
   border-radius: 12px;
-  max-width: 400px;   
-  width: 90%;          
+  max-width: 400px;    /* smaller max width */
+  width: 90%;          /* keep it responsive */
   text-align: center;
   position: relative;
   z-index: 2001; 
 }
 
 .modal-logo {
-  width: 60%;          
-  max-width: 150px;    
+  width: 60%;          /* smaller logo */
+  max-width: 150px;    /* smaller max width */
   height: auto;
   object-fit: contain;
-  margin-bottom: 10px; 
+  margin-bottom: 10px; /* less spacing */
 }
 
 .modal ul {
-  text-align: left; 
+  text-align: left; /* left-align names */
   margin-top: 15px;
   padding-left: 20px;
   max-height: 200px;
@@ -213,12 +220,12 @@ body {
 .modal li {
   margin-bottom: 8px;
   font-size: 16px;
-  text-align: left; 
+  text-align: left; /* ensure text is left-aligned */
 }
 
 .close-btn {
-  margin-top: 15px;    
-  padding: 8px 20px;   
+  margin-top: 15px;    /* less margin */
+  padding: 8px 20px;   /* smaller button */
   font-size: 13px;
   min-width: 70px;
 }
@@ -227,10 +234,14 @@ body {
   background: #0a2a6e;
 }
 
+/* Footer */
+
 footer {
   width: 100%;
   margin-top: auto;
 }
+
+/* Mobile */
 
 @media (max-width: 768px) {
 
@@ -257,20 +268,15 @@ footer {
 
 }
 
-@media (max-width: 768px) {
-  .hmo-banner{
-    height: 220px;
-  }
-}
-
 @media (max-width: 480px) {
-  .hmo-banner{
-    height: 180px;
+
+  .hmo-banner {
+    height: 140px;
   }
 
 .hmo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* 4 per row on desktop */
   gap: 20px;
   margin-top: 30px;
 }
@@ -321,5 +327,27 @@ footer {
   .hmo-grid {
     grid-template-columns: 1fr;
     gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .hmo-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+  }
+}
+@media (max-width: 1024px) {
+  .hmo-banner {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hmo-banner {
+    height: 180px;
+    background-size: contain; 
+    background-position: center;
+    background-color: #ffffff;
   }
 }
