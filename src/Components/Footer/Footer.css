@@ -82,6 +82,7 @@ html, body, #root {
 
 .footer {
   background-color: #2d307e;
+  z-index: 0;
   color: white;
   padding: 18px 40px 8px;
   font-family: Arial, sans-serif;
