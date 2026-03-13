@@ -7,12 +7,12 @@ import "./Doctors.css";
   const doctors = [
   {
     name: "Angel Prodigalidad II, MD",
-    specialty: "General Medicine",
+    specialty: "General Practitioner",
     schedule: { Monday: "5PM–7PM", Tuesday: "7AM–9AM & 5PM-7PM", Wednesday: "7AM–9AM", Thursday: "5PM–7PM", Friday: "7AM–9AM & 5PM-7PM", Saturday: "7AM–9AM", Sunday: "" },
   },
   {
     name: "Mafil Calamay, MD",
-    specialty: "General Medicine",
+    specialty: "General Practitioner",
     schedule: { Monday: "7AM–9AM", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "12NN-7PM" },
   },
   {
@@ -67,12 +67,12 @@ import "./Doctors.css";
   },
   {
     name: "Renante Del Valle, MD",
-    specialty: "ENT-NHS",
+    specialty: "ENT",
     schedule: { Monday: "1PM–3PM", Tuesday: "", Wednesday: "3PM–4PM", Thursday: "", Friday: "3PM–4PM", Saturday: "", Sunday: "" },
   },
   {
     name: "Aubrey Ambata, MD",
-    specialty: "ENT-NHS",
+    specialty: "ENT",
     schedule: { Monday: "", Tuesday: "2PM–3PM", Wednesday: "", Thursday: "2PM–3PM", Friday: "", Saturday: "2PM–3PM", Sunday: "2PM–3PM" },
   },
   {
@@ -92,12 +92,12 @@ import "./Doctors.css";
   },
   {
     name: "John Collins De Castro, MD",
-    specialty: "General Medicine",
+    specialty: "General Practitioner",
     schedule: { Monday: "", Tuesday: "9AM–5PM", Wednesday: "9AM–12NN", Thursday: "9AM–5PM", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Irene Cabacang, MD",
-    specialty: "General Medicine",
+    specialty: "General Practitioner",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "9AM–5PM", Saturday: "", Sunday: "9AM–5PM"  },
   },
   {
@@ -112,410 +112,261 @@ import "./Doctors.css";
   },
     {
     name: "Romeo Basingan Jr., MD",
-    specialty: "General Medicine",
-    type: "Reliever",
+    specialty: "General Practitioner",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Gren May Angeli Magsakay, MD",
-    specialty: "General Medicine",
-    type: "Reliever",
+    specialty: "General Practitioner",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Angellie Nikka Abad, MD",
-    specialty: "General Medicine",
-    type: "Reliever",
+    specialty: "General Practitioner",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Ann Crizette Garcia, MD",
     specialty: "IM- Pulmonologist",
-    type: "Referral Doctor",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Michael Abaigar Jr., MD",
-    specialty: "General Medicine",
-    type: "Reliever",
+    specialty: "General Practitioner",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   { 
     name: "William Recuenco, MD",
     specialty: "Opthalmologist",
-    type: "Appointment",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Michael Bravo, MD",
     specialty: "Opthalmologist",
-    type: "Appointment",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Rocky Perocho, MD",
     specialty: "Anesthesiology",
-    type: "Appointment",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Josephine Isabelle Pre, MD",
     specialty: "Anesthesiology",
-    type: "Appointment",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Jose Carlo Magsino, MD",
     specialty: "Anesthesiology",
-    type: "Appointment",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Guillen Segador, MD",
     specialty: "Anesthesiology",
-    type: "Appointment",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Paola Muharrani, MD",
-    specialty: "OB-GYN",
-    type: "Referral Doctor",
+    specialty: "OB-Gyne",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Raymund Quiambao, MD",
     specialty: "Orthopaedic Surgeon",
-    type: "Referral Doctor",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
   {
     name: "Maria May Castell, MD",
-    specialty: "OB-GYN",
-    type: "Referral Doctor",
+    specialty: "OB-Gyne",
     schedule: { Monday: "", Tuesday: "", Wednesday: "", Thursday: "", Friday: "", Saturday: "", Sunday: "" },
   },
 ];
+
  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-
 const Doctors = () => {
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const [dailyScheduleVisible, setDailyScheduleVisible] = useState(false);
+  const [closingDaily, setClosingDaily] = useState(false);
+  const [closingDoctor, setClosingDoctor] = useState(false);
 
-  const [selectedDoctor,setSelectedDoctor] = useState(null);
-  const [dailyScheduleVisible,setDailyScheduleVisible] = useState(false);
-  const [closingDaily,setClosingDaily] = useState(false);
-  const [closingDoctor,setClosingDoctor] = useState(false);
-
-  /* auto refresh every minute */
-  const [refresh,setRefresh] = useState(0);
-
-  useEffect(()=>{
-    const interval = setInterval(()=>{
-      setRefresh(Date.now());
-    },60000);
-
-    return ()=>clearInterval(interval);
-  },[]);
-
-  useEffect(()=>{
+  useEffect(() => {
     const lastShown = localStorage.getItem("dailyScheduleShown");
     const today = new Date().toDateString();
-
-    if(lastShown !== today){
+    if (lastShown !== today) {
       setDailyScheduleVisible(true);
-      localStorage.setItem("dailyScheduleShown",today);
+      localStorage.setItem("dailyScheduleShown", today);
     }
-  },[]);
+  }, []);
 
   const getTodayKey = () => {
     const todayIndex = new Date().getDay();
-    return days[(todayIndex + 6) % 7];
+    return days[(todayIndex + 6) % 7]; 
   };
 
   const todayKey = getTodayKey();
 
+
   const parseTime = (timeStr) => {
-
-    if(!timeStr || timeStr.trim() === "") return Infinity;
-
-    const firstSegment = timeStr.split("&")[0].trim();
-    const parts = firstSegment.split(/-|–|—/);
-
-    const start = parts[0].trim();
-
+    if (!timeStr || timeStr.trim() === "") return Infinity;
+    const firstSegment = timeStr.split("&")[0].trim(); 
+    const [start] = firstSegment.split("–").map(t => t.trim());
     let hour = parseInt(start.match(/\d+/)[0]);
-
-    if(/PM/i.test(start) && hour !== 12) hour += 12;
-    if(/AM/i.test(start) && hour === 12) hour = 0;
-
+    if (/PM/i.test(start) && hour !== 12) hour += 12;
+    if (/AM/i.test(start) && hour === 12) hour = 0;
     return hour;
   };
 
-  /* AVAILABLE NOW FUNCTION */
-
-  const isDoctorAvailableNow = (timeRange) => {
-
-    if (!timeRange || timeRange.trim() === "") return false;
-
-    const now = new Date();
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
-
-    const firstSegment = timeRange.split("&")[0].trim();
-    const parts = firstSegment.split(/-|–|—/);
-
-    if(parts.length !== 2) return false;
-
-    const start = parts[0].trim();
-    const end = parts[1].trim();
-
-    const convertToMinutes = (time) => {
-
-      if(time.includes("12NN")) return 12*60;
-
-      const match = time.match(/\d+/);
-      if(!match) return 0;
-
-      let hour = parseInt(match[0]);
-
-      if(/PM/i.test(time) && hour !== 12) hour += 12;
-      if(/AM/i.test(time) && hour === 12) hour = 0;
-
-      return hour*60;
-    };
-
-    const startMin = convertToMinutes(start);
-    const endMin = convertToMinutes(end);
-
-    return currentMinutes >= startMin && currentMinutes <= endMin;
-  };
 
   const doctorsToday = doctors
-    .filter(doc => doc.schedule[todayKey] && doc.schedule[todayKey].trim() !== "")
-    .sort((a,b)=> parseTime(a.schedule[todayKey]) - parseTime(b.schedule[todayKey]));
+    .filter(doc => doc.schedule[todayKey] && doc.schedule[todayKey].trim() !== "" && doc.schedule[todayKey] !== "—" && doc.schedule[todayKey] !== "-")
+    .sort((a, b) => parseTime(a.schedule[todayKey]) - parseTime(b.schedule[todayKey]));
 
-  return(
+  return (
+    <div className="page-wrapper">
+      <div className="doctor-page">
+        <div className="doctor-banner"></div>
 
-  <div className="page-wrapper">
+        <div className="doctor-content">
+          <h1>Our Doctors</h1>
+          <p>Meet our team of expert doctors ready to serve you.</p>
+          <button
+            className="close-btn"
+            style={{ marginTop: "15px", fontSize: "18px" }}
+            onClick={() => setDailyScheduleVisible(true)}
+          >
+            View the doctors schedule today
+          </button>
 
-    <div className="doctor-page">
-
-      <div className="doctor-banner"></div>
-
-      <div className="doctor-content">
-
-        <h1>Our Doctors</h1>
-        <p>Meet our team of expert doctors ready to serve you.</p>
-
-        <button
-          className="close-btn"
-          style={{marginTop:"15px",fontSize:"18px"}}
-          onClick={()=>setDailyScheduleVisible(true)}
-        >
-          View the doctors schedule today
-        </button>
-
-        <div className="doctor-grid">
-
-          {doctors.map((doc,index)=>{
-
-            const availableNow = isDoctorAvailableNow(doc.schedule[todayKey]);
-
-            return(
-
+          <div className="doctor-grid">
+            {doctors.map((doc, index) => (
               <div
                 key={index}
                 className="doctor-card"
-                onClick={()=>setSelectedDoctor(doc)}
+                onClick={() => setSelectedDoctor(doc)}
               >
-
-                {availableNow && (
-                  <div className="available-status">
-                    <span className="available-dot"></span>
-                    <span className="available-text">Available Now</span>
-                  </div>
-                )}
-
                 <h3>{doc.name}</h3>
                 <p>{doc.specialty}</p>
-
                 <span className="view-text">View Schedule</span>
-
               </div>
-            );
-          })}
-
+            ))}
+          </div>
         </div>
-
       </div>
 
-    </div>
+      {dailyScheduleVisible && (
+        <div
+          className={`modal-overlay ${closingDaily ? "closing" : ""}`}
+          onClick={() => {
+            setClosingDaily(true);
+            setTimeout(() => {
+              setDailyScheduleVisible(false);
+              setClosingDaily(false);
+            }, 400);
+          }}
+        >
+          <div
+            className={`modal schedule-modal ${closingDaily ? "closing" : ""}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>Doctors Schedule Today ({todayKey})</h2>
 
-{/* DAILY SCHEDULE MODAL */}
+            {doctorsToday.length > 0 ? (
+              <table className="schedule-table">
+                <thead>
+                  <tr>
+                    <th>Doctor</th>
+                    <th>Specialty</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {doctorsToday.map((doc, index) => (
+                    <tr key={index}>
+                      <td>{doc.name}</td>
+                      <td>{doc.specialty}</td>
+                      <td>{doc.schedule[todayKey]}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p>No doctors available today.</p>
+            )}
 
-{dailyScheduleVisible && (
-
-<div
-className={`modal-overlay ${closingDaily ? "closing" : ""}`}
-onClick={()=>{
-
-setClosingDaily(true);
-
-setTimeout(()=>{
-
-setDailyScheduleVisible(false);
-setClosingDaily(false);
-
-},400);
-
-}}
->
-
-<div className="modal schedule-modal" onClick={(e)=>e.stopPropagation()}>
-
-<h2>Doctors Schedule Today ({todayKey})</h2>
-
-{doctorsToday.length > 0 ? (
-
-<table className="schedule-table">
-
-<thead>
-<tr>
-<th>Doctor</th>
-<th>Specialty</th>
-<th>Time</th>
-</tr>
-</thead>
-
-<tbody>
-
-{doctorsToday.map((doc,index)=>(
-
-<tr key={index}>
-<td>{doc.name}</td>
-<td>{doc.specialty}</td>
-<td>{doc.schedule[todayKey]}</td>
-</tr>
-
-))}
-
-</tbody>
-
-</table>
-
-):( <p>No doctors available today.</p> )}
-
-<button
-className="close-btn"
-onClick={()=>setDailyScheduleVisible(false)}
->
-Close
-</button>
-
-</div>
-</div>
-
-)}
-
-{/* DOCTOR MODAL */}
-
-{selectedDoctor && (
-
-<div
-className={`modal-overlay ${closingDoctor ? "closing" : ""}`}
-onClick={()=>{
-
-setClosingDoctor(true);
-
-setTimeout(()=>{
-
-setSelectedDoctor(null);
-setClosingDoctor(false);
-
-},400);
-
-}}
->
-
-<div className="modal schedule-modal" onClick={(e)=>e.stopPropagation()}>
-
-<h2>{selectedDoctor.name}</h2>
-<p>{selectedDoctor.specialty}</p>
-
-{Object.values(selectedDoctor.schedule).some(time=>time && time.trim() !== "") ? (
-
-<table className="schedule-table">
-
-<thead>
-<tr>
-
-{days
-.filter(d => selectedDoctor.schedule[d] && selectedDoctor.schedule[d].trim() !== "")
-.map(d => (
-
-<th key={d}>
-
-<span className="desktop-day">{d}</span>
-
-<span className="mobile-day">
-{d === "Monday" && "Mon"}
-{d === "Tuesday" && "Tue"}
-{d === "Wednesday" && "Wed"}
-{d === "Thursday" && "Thu"}
-{d === "Friday" && "Fri"}
-{d === "Saturday" && "Sat"}
-{d === "Sunday" && "Sun"}
-</span>
-
-</th>
-
-))}
-
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-
-{days
-.filter(d => selectedDoctor.schedule[d] && selectedDoctor.schedule[d].trim() !== "")
-.map(d => (
-
-<td key={d}>{selectedDoctor.schedule[d]}</td>
-
-))}
-
-</tr>
-
-</tbody>
-
-</table>
-
-):( <div className="no-schedule-box">
-<h3 className="doctor-type">{selectedDoctor.type}</h3>
-</div>)}
-
-<button
-className="close-btn"
-onClick={()=>{
-
-setClosingDoctor(true);
-
-setTimeout(()=>{
-
-setSelectedDoctor(null);
-setClosingDoctor(false);
-
-},400);
-
-}}
->
-Close
-</button>
-
-</div>
-</div>
-
-)}
+            <button
+              className="close-btn"
+              onClick={() => {
+                setClosingDaily(true);
+                setTimeout(() => {
+                  setDailyScheduleVisible(false);
+                  setClosingDaily(false);
+                }, 400);
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+      {selectedDoctor && (
+        <div
+          className={`modal-overlay ${closingDoctor ? "closing" : ""}`}
+          onClick={() => {
+            setClosingDoctor(true);
+            setTimeout(() => {
+              setSelectedDoctor(null);
+              setClosingDoctor(false);
+            }, 400);
+          }}
+        >
+          <div
+            className={`modal schedule-modal ${closingDoctor ? "closing" : ""}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>{selectedDoctor.name}</h2>
+            <p>{selectedDoctor.specialty}</p>
+              {Object.values(selectedDoctor.schedule).some((time) => time && time.trim() !== "") ? (
+                <table className="schedule-table">
+                  <thead>
+                    <tr>
+                      {days
+                        .filter((d) => selectedDoctor.schedule[d] && selectedDoctor.schedule[d].trim() !== "")
+                        .map((d) => (
+                          <th key={d}>{d}</th>
+                        ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      {days
+                        .filter((d) => selectedDoctor.schedule[d] && selectedDoctor.schedule[d].trim() !== "")
+                        .map((d) => (
+                          <td key={d}>{selectedDoctor.schedule[d]}</td>
+                        ))}
+                    </tr>
+                  </tbody>
+                </table>
+              ) : (
+                <p style={{ fontWeight: "bold", marginTop: "20px", fontSize: "30px" }}>
+                  "Reliever, Oncall or Referral Doctor"
+                </p>
+              )}
+            <button
+              className="close-btn"
+              onClick={() => {
+                setClosingDoctor(true);
+                setTimeout(() => {
+                  setSelectedDoctor(null);
+                  setClosingDoctor(false);
+                }, 400);
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       <ChatBot />
       <Footer />

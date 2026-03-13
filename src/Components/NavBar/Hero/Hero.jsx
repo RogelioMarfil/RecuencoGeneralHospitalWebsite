@@ -13,9 +13,7 @@ const Hero = ({ onScroll }) => {
           beyond treatment to give you and your 
           family the solace, confidence, and recovery 
           you deserve
-          
         </p>
-        <p>"Sa Recuenco, Alaga ka!"</p>
         <button className="Btn" onClick={onScroll}>
           Explore More <img src="" alt="" />
         </button>

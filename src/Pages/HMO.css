@@ -139,15 +139,18 @@ body {
   margin-left: auto;
 }
 
+/* HMO Grid */
+
 .hmo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); 
+  grid-template-columns: repeat(4, 1fr); /* force 4 per row on desktop */
   gap: 20px;
   margin-top: 30px;
 }
 
+/* Cards */
+
 .hmo-card {
-  outline: none;
   background: #f0f4ff;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -158,14 +161,6 @@ body {
   align-items: center;
   height: 140px;
   padding: 15px;
-}
-.hmo-card:focus,
-.hmo-card:active {
-  outline: none;
-  box-shadow: none;
-}
-.hmo-page, .modal, .hmo-card {
-  user-select: none;
 }
 .hmo-card:hover {
   background: #dde6ff;
@@ -178,37 +173,43 @@ body {
   max-height: 100%;
 }
 
+
+/* Modal */
+
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  z-index: 999;
 }
 
 .modal {
   background: #fff;
-  padding: 25px 35px;
+  padding: 20px;       /* smaller padding */
   border-radius: 12px;
+  max-width: 400px;    /* smaller max width */
+  width: 90%;          /* keep it responsive */
+  text-align: center;
   position: relative;
-  z-index: 2001;
+  z-index: 2001; 
 }
-.modal-animated-content {
-  width: 100%;
-}
+
 .modal-logo {
-  width: 60%;          
-  max-width: 150px;    
+  width: 60%;          /* smaller logo */
+  max-width: 150px;    /* smaller max width */
   height: auto;
   object-fit: contain;
-  margin-bottom: 10px; 
+  margin-bottom: 10px; /* less spacing */
 }
 
 .modal ul {
-  text-align: left; 
+  text-align: left; /* left-align names */
   margin-top: 15px;
   padding-left: 20px;
   max-height: 200px;
@@ -218,12 +219,12 @@ body {
 .modal li {
   margin-bottom: 8px;
   font-size: 16px;
-  text-align: left; 
+  text-align: left; /* ensure text is left-aligned */
 }
 
 .close-btn {
-  margin-top: 15px;    
-  padding: 8px 20px;   
+  margin-top: 15px;    /* less margin */
+  padding: 8px 20px;   /* smaller button */
   font-size: 13px;
   min-width: 70px;
 }
@@ -231,94 +232,18 @@ body {
 .close-btn:hover {
   background: #0a2a6e;
 }
+
+/* Footer */
+
 footer {
   width: 100%;
   margin-top: auto;
 }
-.doctor-specialty {
-  color: #555;
-  font-size: 14px;
-  font-weight: 500;
-}
 
-.doctor-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-.doctor-table thead {
-  background-color: #f2f2f2;
-}
+/* Mobile */
 
-/* Make tbody scrollable */
-.doctor-table tbody {
-  display: block;
-  max-height: 320px;
-  overflow-y: auto;
-}
-
-/* Keep header aligned with body */
-.doctor-table thead,
-.doctor-table tbody tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-}
-
-/* Table cells */
-.doctor-table th,
-.doctor-table td {
-  padding: 10px 14px;
-  border: 1px solid #ddd;
-}
-
-/* Optional: smooth scroll look */
-.doctor-table tbody::-webkit-scrollbar {
-  width: 6px;
-}
-
-.doctor-table tbody::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 3px;
-}
-.doctor-table th,
-.doctor-table td {
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  text-align: left;
-}
-
-.doctor-table th {
-  background-color: #f2f2f2;
-}
-
-.doctor-table tbody tr:nth-child(even) {
-  background-color: #fafafa;
-}
-
-@media (min-width: 1200px) {
-  .modal {
-    max-width: 1300px;
-  }
-}
 @media (max-width: 768px) {
-  .modal {
-    width: 95%;
-    padding: 20px;
-  }
-   .doctor-table {
-    font-size: 14px;
-  }
 
-  .doctor-table th,
-  .doctor-table td {
-    padding: 6px 8px;
-  }
-
-  .doctor-table tbody {
-    max-height: 180px;
-    overflow-y: auto;
-  }
   .hmo-banner {
     height: 180px;
   }
@@ -342,19 +267,15 @@ footer {
 
 }
 
-@media (max-width: 768px) {
-  .hmo-banner{
-    height: 220px;
-  }
-}
 @media (max-width: 480px) {
-  .hmo-banner{
-    height: 180px;
+
+  .hmo-banner {
+    height: 140px;
   }
 
 .hmo-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* 4 per row on desktop */
   gap: 20px;
   margin-top: 30px;
 }
@@ -362,6 +283,9 @@ footer {
   .hmo-card {
     height: 100px;
   }
+
+}
+@media (max-width: 480px) {
   .modal {
     max-width: 95%;
     padding: 15px;
@@ -395,5 +319,34 @@ footer {
 @media (max-width: 768px) {
   .hmo-grid {
     grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 480px) {
+  .hmo-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .hmo-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on mobile */
+  }
+}
+@media (max-width: 1024px) {
+  .hmo-banner {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hmo-banner {
+    height: 180px;
+    background-size: contain; 
+    background-position: center;
+    background-color: #ffffff;
   }
 }

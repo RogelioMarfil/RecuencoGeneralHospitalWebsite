@@ -6,7 +6,6 @@ import hospitalLogo from "../src/assets/Logo.png";
 import Footer from './Components/Footer/Footer';
 import ChatBot from './Components/ChatBot/ChatBot';
 import Events from './Components/Events/Events';
-import Accreditations from './Components/Accredetation/Accreditations'
 
 
 function App () {
@@ -28,7 +27,6 @@ function App () {
         <Title title='OUR SERVICES'/>
         <Programs/>
         <Events/>
-        <Accreditations/>
         <ChatBot/>
         <Footer/>
         </div>

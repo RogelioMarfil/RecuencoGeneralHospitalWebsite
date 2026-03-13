@@ -16,7 +16,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <span className="line">No. 68 Sampaloc Extension, North Signal Village,</span>
-                <span className="line">Taguig City, Metro Manila, 1630 Philippines</span>
+                <span className="line">Taguig City, Metro Manila, 1630</span>
               </a>
             </p>
           </div>
