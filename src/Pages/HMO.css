@@ -1,0 +1,398 @@
+.hmo-page {
+  background: #fff;
+  flex: 1;
+}
+.banner {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: auto;        
+  max-height: 300px;     
+  object-fit: cover;    
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hmo-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 15px;
+  margin-top: 20px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+/* Banner */
+
+.hmo-banner{
+  width: 100%;
+  height: 320px;
+  background: url(../assets/HMOLogo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hmo-content {
+  flex: 1;
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.hmo-content h1 {
+  margin-bottom: 10px;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+}
+
+.doctor-hmo-list {
+  text-align: left;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.doctor-hmo-list li {
+  margin-bottom: 5px;
+}
+
+.search-container {
+  position: relative;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-input-wrapper {
+  position: relative;
+}
+
+.search-container input {
+  width: 320px;
+  max-width: 90vw;
+  padding: 10px 15px;
+  border-radius: 25px 25px 0 0;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #24297b;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-container button:hover {
+  background: #302f68;
+}
+
+.suggestions-dropdown {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  max-height: 230px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 12px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.suggestion-item:hover {
+  background: #f0f4ff;
+}
+
+.suggestion-type {
+  font-size: 11px;
+  background: #24297b;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+.hmo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.hmo-card {
+  outline: none;
+  background: #f0f4ff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  padding: 15px;
+}
+.hmo-card:focus,
+.hmo-card:active {
+  outline: none;
+  box-shadow: none;
+}
+.hmo-page, .modal, .hmo-card {
+  user-select: none;
+}
+.hmo-card:hover {
+  background: #dde6ff;
+  transform: scale(1.05);
+}
+
+.hmo-logo {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: #fff;
+  padding: 25px 35px;
+  border-radius: 12px;
+  position: relative;
+  z-index: 2001;
+}
+.modal-animated-content {
+  width: 100%;
+}
+.modal-logo {
+  width: 60%;          
+  max-width: 150px;    
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 10px; 
+}
+
+.modal ul {
+  text-align: left; 
+  margin-top: 15px;
+  padding-left: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.modal li {
+  margin-bottom: 8px;
+  font-size: 16px;
+  text-align: left; 
+}
+
+.close-btn {
+  margin-top: 15px;    
+  padding: 8px 20px;   
+  font-size: 13px;
+  min-width: 70px;
+}
+
+.close-btn:hover {
+  background: #0a2a6e;
+}
+footer {
+  width: 100%;
+  margin-top: auto;
+}
+.doctor-specialty {
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.doctor-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.doctor-table thead {
+  background-color: #f2f2f2;
+}
+
+
+.doctor-table tbody {
+  display: block;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+
+.doctor-table thead,
+.doctor-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+
+.doctor-table th,
+.doctor-table td {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+}
+
+.doctor-table tbody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.doctor-table tbody::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+.doctor-table th,
+.doctor-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.doctor-table th {
+  background-color: #f2f2f2;
+}
+
+.doctor-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+@media (min-width: 1200px) {
+  .modal {
+    max-width: 1300px;
+  }
+}
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    padding: 20px;
+  }
+   .doctor-table {
+    font-size: 14px;
+  }
+
+  .doctor-table th,
+  .doctor-table td {
+    padding: 6px 8px;
+  }
+
+  .doctor-table tbody {
+    max-height: 180px;
+    overflow-y: auto;
+  }
+  .hmo-banner {
+    height: 180px;
+  }
+
+  .hmo-card {
+    height: 120px;
+  }
+
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-container input {
+    width: 90%;
+  }
+
+  .search-container button {
+    width: 150px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .hmo-banner{
+    height: 220px;
+  }
+}
+@media (max-width: 480px) {
+  .hmo-banner{
+    height: 180px;
+  }
+
+.hmo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+  .hmo-card {
+    height: 100px;
+  }
+  .modal {
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .modal-logo {
+    width: 50%;
+    max-width: 120px;
+    margin-bottom: 8px;
+  }
+
+  .modal ul {
+    max-height: 120px;
+  }
+
+  .modal li {
+    font-size: 13px;
+  }
+
+  .close-btn {
+    padding: 6px 18px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  .hmo-grid {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .hmo-grid {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
