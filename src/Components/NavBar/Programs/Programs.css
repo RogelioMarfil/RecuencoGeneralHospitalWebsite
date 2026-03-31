@@ -2,6 +2,8 @@
     margin: 80px auto;
     width: 90%;
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     align-items: center;
     justify-content: space-between;
 }
@@ -11,8 +13,9 @@
     display: block;
 }
 .program{
-    flex-basis: 31%;
+    flex: 0 1 calc(33.333% - 20px);
     position: relative;
+    margin-bottom: 20px;
 }
 .caption{
     border-radius: 10px;
@@ -39,4 +42,44 @@
 .program:hover .caption{
     opacity: 1;
     padding-top: 0;
+}
+
+@media (max-width: 1000px) {
+  .programs {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .program {
+    flex-basis: 45%;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 900px) {
+    .program {
+        flex: 0 1 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 600px) {
+  .programs {
+    flex-direction: column;
+    gap: 20px;
+    width: 95%;
+    margin: 50px auto;
+  }
+
+  .program {
+    flex: 0 1 100%;
+  }
+
+  .caption img {
+    width: 50px; 
+  }
+
+  .caption p {
+    font-size: 16px;
+    padding: 0 10px;
+  }
 }
