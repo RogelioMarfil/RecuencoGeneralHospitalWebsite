@@ -1,0 +1,74 @@
+.accreditations {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f8f9fc;
+}
+
+.accreditation-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #2d307e;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.logo-row:not(.bottom-row) img {
+  width: 180px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.bottom-row img {
+  width: 300px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo-row img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .accreditation-title {
+    font-size: 28px;
+  }
+  .logo-row:not(.bottom-row) img {
+    width: 140px;
+  }
+  .bottom-row img {
+    width: 200px;
+  }
+  .logo-row {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .accreditation-title {
+    font-size: 24px;
+  }
+  .logo-row:not(.bottom-row) img {
+    width: 120px;
+  }
+  .bottom-row img {
+    width: 180px;
+  }
+  .logo-row {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+}
