@@ -1,0 +1,15 @@
+/* MainApp.css */
+.main-content {
+  min-height: 100vh;
+  padding-top: 0;
+}
+
+.route-content {
+  padding-top: 90px;
+}
+
+@media (max-width: 768px) {
+  .route-content {
+    padding-top: 70px;
+  }
+}
