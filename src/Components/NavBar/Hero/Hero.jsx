@@ -22,7 +22,6 @@ const Hero = ({ onScroll }) => {
     <div className="hero">
       <div className="hero-text">
         <h1>Recuenco General Hospital</h1>
-
         <p>
           Our hospital is committed to providing you 
           with the best care possible by offering efficient,
