@@ -1,0 +1,600 @@
+/* =========================================
+   RICA FLOATING NURSE
+========================================= */
+
+.rica-nurse-launcher {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 9999;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  animation: ricaFloat 3s ease-in-out infinite;
+}
+
+.rica-speech {
+  background: white;
+  color: #24279b;
+  padding: 10px 15px;
+  border-radius: 18px 18px 5px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
+  animation: ricaSpeech 2.5s ease-in-out infinite;
+}
+
+.rica-nurse {
+  width: 90px;
+  height: 125px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* =========================================
+   NURSE HEAD
+========================================= */
+
+.nurse-head {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  left: 16px;
+  top: 10px;
+}
+
+.nurse-face {
+  width: 52px;
+  height: 52px;
+  background: #ffd8c2;
+  border-radius: 50%;
+  position: absolute;
+  left: 3px;
+  top: 5px;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.nurse-hair {
+  position: absolute;
+  width: 58px;
+  height: 35px;
+  background: #3b2925;
+  border-radius: 35px 35px 10px 10px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.nurse-face .eye {
+  position: absolute;
+  width: 5px;
+  height: 7px;
+  background: #333;
+  border-radius: 50%;
+  top: 27px;
+}
+
+.nurse-face .eye.left {
+  left: 14px;
+}
+
+.nurse-face .eye.right {
+  right: 14px;
+}
+
+.nurse-face .smile {
+  position: absolute;
+  width: 17px;
+  height: 8px;
+  border-bottom: 2px solid #b44b5c;
+  border-radius: 0 0 15px 15px;
+  left: 18px;
+  top: 36px;
+}
+
+/* =========================================
+   NURSE CAP
+========================================= */
+
+.nurse-cap {
+  position: absolute;
+  width: 48px;
+  height: 18px;
+  background: white;
+  left: 5px;
+  top: 0;
+  z-index: 3;
+  border-radius: 7px 7px 3px 3px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nurse-cap span {
+  color: #24279b;
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  left: 19px;
+  top: -2px;
+}
+
+/* =========================================
+   NURSE BODY
+========================================= */
+
+.nurse-body {
+  position: absolute;
+  width: 68px;
+  height: 63px;
+  left: 10px;
+  top: 62px;
+  background: #ffffff;
+  border-radius: 18px 18px 10px 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.nurse-cross {
+  position: absolute;
+  left: 29px;
+  top: 19px;
+  color: #24279b;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* =========================================
+   WAVING ARM
+========================================= */
+
+.nurse-arm {
+  position: absolute;
+  width: 17px;
+  height: 43px;
+  background: #ffd8c2;
+  border-radius: 15px;
+  z-index: 5;
+}
+
+.waving-arm {
+  right: -2px;
+  top: 61px;
+  transform-origin: bottom center;
+  animation: nurseWave 1.2s ease-in-out infinite;
+}
+
+.nurse-hand {
+  position: absolute;
+  top: -20px;
+  left: -7px;
+  font-size: 27px;
+}
+
+/* =========================================
+   CHAT WINDOW
+========================================= */
+
+.rica-window {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 380px;
+  height: 570px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+  z-index: 10000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: ricaOpen 0.3s ease;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.rica-header {
+  background: #24279b;
+  color: white;
+  padding: 13px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rica-header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rica-header-info strong {
+  display: block;
+  font-size: 17px;
+}
+
+.rica-header-info span {
+  display: block;
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.rica-mini-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.rica-close {
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.rica-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+.rica-body {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  background: #f7f8fc;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.rica-message {
+  display: flex;
+  gap: 7px;
+  max-width: 88%;
+  align-items: flex-end;
+}
+
+.rica-message.bot {
+  align-self: flex-start;
+}
+
+.rica-message.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.rica-message-avatar {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rica-message-text {
+  padding: 10px 13px;
+  border-radius: 15px;
+  white-space: pre-line;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.rica-message.bot .rica-message-text {
+  background: white;
+  color: #222;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+}
+
+.rica-message.user .rica-message-text {
+  background: #24279b;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+/* =========================================
+   TYPING
+========================================= */
+
+.rica-typing {
+  background: white;
+  padding: 11px 14px;
+  border-radius: 15px;
+  display: flex;
+  gap: 4px;
+}
+
+.rica-typing span {
+  width: 6px;
+  height: 6px;
+  background: #24279b;
+  border-radius: 50%;
+  animation: typingDot 1.2s infinite;
+}
+
+.rica-typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.rica-typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* =========================================
+   LANGUAGE CARD
+========================================= */
+
+.rica-language-card {
+  margin: auto;
+  width: 90%;
+  background: white;
+  padding: 25px 20px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.rica-small-nurse {
+  font-size: 45px;
+  margin-bottom: 5px;
+}
+
+.rica-language-card h3 {
+  margin: 5px 0;
+  color: #24279b;
+}
+
+.rica-language-card p {
+  font-size: 13px;
+  color: #555;
+}
+
+.rica-language-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.rica-language-buttons button,
+.rica-language-change button {
+  border: none;
+  background: #24279b;
+  color: white;
+  padding: 9px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.rica-language-buttons button:hover,
+.rica-language-change button:hover {
+  opacity: 0.85;
+}
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.rica-quick-actions {
+  display: flex;
+  gap: 7px;
+  padding: 9px;
+  overflow-x: auto;
+  background: #f2f3fa;
+  border-top: 1px solid #ddd;
+}
+
+.rica-quick-actions button {
+  flex-shrink: 0;
+  border: none;
+  background: white;
+  color: #24279b;
+  border: 1px solid #d7d8ec;
+  border-radius: 18px;
+  padding: 7px 11px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.rica-quick-actions button:hover {
+  background: #24279b;
+  color: white;
+}
+
+/* =========================================
+   INPUT
+========================================= */
+
+.rica-input-area {
+  display: flex;
+  padding: 9px;
+  border-top: 1px solid #ddd;
+  background: white;
+  gap: 7px;
+}
+
+.rica-input-area input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 22px;
+  padding: 10px 13px;
+  outline: none;
+  font-size: 14px;
+}
+
+.rica-input-area input:focus {
+  border-color: #24279b;
+}
+
+.rica-input-area button {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  border: none;
+  background: #24279b;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.rica-input-area button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* =========================================
+   LANGUAGE CHANGE
+========================================= */
+
+.rica-language-change {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid #ddd;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes nurseWave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(18deg);
+  }
+
+  50% {
+    transform: rotate(-15deg);
+  }
+
+  75% {
+    transform: rotate(18deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes ricaFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes ricaSpeech {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes ricaOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes typingDot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .rica-nurse-launcher {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .rica-speech {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .rica-nurse {
+    transform: scale(0.85);
+    transform-origin: bottom right;
+  }
+
+  .rica-window {
+    width: 94%;
+    height: 80vh;
+    right: 3%;
+    bottom: 15px;
+    border-radius: 17px;
+  }
+}
+
+@media (max-width: 400px) {
+  .rica-speech {
+    display: none;
+  }
+
+  .rica-nurse {
+    transform: scale(0.8);
+  }
+
+  .rica-window {
+    width: 96%;
+    right: 2%;
+    height: 82vh;
+  }
+
+  .rica-message-text {
+    font-size: 13px;
+  }
+}
